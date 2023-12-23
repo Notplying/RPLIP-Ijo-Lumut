@@ -96,6 +96,8 @@ class HomeController extends Controller
             $cart->quantity=$request->quantity;
 
             $cart->save();
+			$product->quantity = $product->quantity - $request->quantity;
+			$product->save();
             return redirect()->back()->with('message', 'Item added to cart successfully');
 
         } else {
@@ -126,7 +128,10 @@ class HomeController extends Controller
 
     public function remove_cart($id){
         $cart=Cart::find($id);
+		$product=Product::find($id);
+		$product->quantity = $product->quantity + $cart->quantity;
         $cart->delete();
+		$product->save();
         return redirect()->back();
     }
 
