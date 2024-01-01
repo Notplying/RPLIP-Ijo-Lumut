@@ -12,7 +12,9 @@
          <input style="width: 500px;" type="text" name="search" placeholder="Search for something">
          <input type="submit" value="Search">
       </form>
-
+       @if ($product->isEmpty())
+     <h2 style="color:red;">No Products Found</h3>
+     @endif
    </div>
 
    </div>
@@ -26,6 +28,8 @@
         
         @endif
    <div class="row">
+
+
 
    @foreach($product as $prod)
 

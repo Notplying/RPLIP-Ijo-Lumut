@@ -49,7 +49,11 @@
                 <input type="submit" value="Search" class="btn btn-outline-info">
 
               </form>
+
             </div>
+              @if ($order->isEmpty())
+              <h1 class="title_deg" style="color:red;">No Orders Found</h1>
+              @endif
 
             <table class="table_deg">
                 <tr>

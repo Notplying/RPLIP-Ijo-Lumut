@@ -128,10 +128,10 @@ class HomeController extends Controller
 
     public function remove_cart($id){
         $cart=Cart::find($id);
-		$product=Product::find($id);
+		$product=Product::find($cart->product_id);
 		$product->quantity = $product->quantity + $cart->quantity;
+        $product->save();
         $cart->delete();
-		$product->save();
         return redirect()->back();
     }
 
